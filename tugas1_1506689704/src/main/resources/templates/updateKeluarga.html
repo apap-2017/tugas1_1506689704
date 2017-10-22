@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<link rel = "stylesheet" href = "/css/bootstrap.min.css"/>
+        <title></title>
+    </head>
+    <body>
+		<div th:replace="fragments/fragment :: header"></div>
+    	<form th:action="'/keluarga/ubah/' + ${keluarga.nomor_kk}" method="post" th:object="${keluarga}">
+    		<center>
+    		<div>
+				<input type = "hidden" name="id" th:field="${keluarga.id}" />
+			</div>
+			<div>
+				<label class="page-header">Alamat</label><br/> 
+				<input type="text" name="alamat" th:field="${keluarga.alamat}"/>
+			</div>
+			<div>
+				<label class="page-header">RT</label><br/> 
+				<input type="text" name="rt" th:field="${keluarga.rt}"/>			
+			</div>
+			<div>
+				<label class="page-header">RW</label><br/> 
+				<input type="text" name="rw" th:field="${keluarga.rw}"/>		
+			</div>
+			<div>
+				<label class="page-header">Kelurahan/Desa</label><br/>
+				<input type="text" name="nama_kelurahan" th:field="${keluarga.nama_kelurahan}"/>
+			</div>
+			<div>
+				<label class="page-header">Kecamatan</label><br/>
+				<input type="text" name="nama_kecamatan" th:field="${keluarga.nama_kecamatan}"/>
+			</div>
+			<div>
+				<label class="page-header">Kota</label><br/>
+				<input type="text" name="nama_kota" th:field="${keluarga.nama_kota}"/>
+			</div>
+			
+				<button type="submit" name="action" value="save">Simpan</button>
+			</center>
+		</form>
+		<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
+

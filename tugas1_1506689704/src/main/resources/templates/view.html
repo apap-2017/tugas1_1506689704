@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<link rel = "stylesheet" href = "/css/bootstrap.min.css"/>
+        <title></title>
+    </head>
+    <body> 
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<H2 th:text="'Lihat Data  Penduduk - ' + ${penduduk.nik}"></H2>
+       	<br/>
+   
+		       	<div class="row">
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Nik</div><div class="col-md-6" th:text="${penduduk.nik}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Nama</div><div class="col-md-6" th:text="${penduduk.namaPenduduk}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Tempat/Tanggal</div><div class="col-md-6" th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Alamat</div><div class="col-md-6" th:text="${alamat.alamat}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">RT/RW</div><div class="col-md-6" th:text="${alamat.rw}"></div>
+						<div class="col-md-4"></div><div class="col-md-2">Kelurahan/Desa</div><div class="col-md-6" th:text="${alamat.nama_kelurahan}"></div>	      	 	
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Kecamatan</div><div class="col-md-6" th:text="${alamat.nama_kecamatan}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Kota</div><div class="col-md-6" th:text="${alamat.nama_kota}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Golongan Darah</div><div class="col-md-6" th:text=" ${penduduk.golongan_darah}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Agama</div><div class="col-md-6" th:text=" ${penduduk.agama}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Status Perkawinan</div><div class="col-md-6" th:text="${penduduk.status_perkawinan}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Pekerjaan</div><div class="col-md-6" th:text="${penduduk.pekerjaan}"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Kewarganegaraan</div><div class="col-md-6" th:text="${penduduk.is_wni}==true?'WNI':'WNA'"></div>
+			      	 	<div class="col-md-4"></div><div class="col-md-2">Status Kematian</div><div class="col-md-6" th:text="${penduduk.is_wafat}==true?'Wafat':'Hidup'"></div>
+			      </div><br/>
+
+			        <form action="/penduduk/mati" method="post" th:object="${penduduk}">
+			          		<input type="hidden"  name="nik" th:value="${penduduk.nik}"/>
+			          	<div>
+							<center><button type="submit" name="action" value="save">Penduduk Mati</button></center>
+						</div>
+					</form>
+			     
+			
+       	<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
